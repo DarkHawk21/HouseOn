@@ -1,0 +1,11 @@
+{
+    "name": "house-on",
+    "description": "Casa Inteligente",
+    "author": "DarkTech",
+    "version": "0.2.0",
+    "dependencies": {
+        "express": "^4.13.3",
+        "johnny-five": "^0.8.53",
+        "socket.io": "^1.3.3"
+    }
+}
