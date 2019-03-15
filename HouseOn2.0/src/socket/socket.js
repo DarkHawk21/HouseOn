@@ -21,10 +21,15 @@ module.exports = (io) => {
         bañoLed = new five.Led(6)
         rec1Led = new five.Led(5);
         rec2Led = new five.Led(3); 
+        
         console.log("board ready");
         io.on('connection', function (socket){ //Se ejecuta con un socket.connect();
             console.log("User Connected :)");
-            socket.emit('onConnection', {isRGBOn: RGBLed.isOn, color: RGBcolor, isBañoOn: bañoLed.isOn});
+            socket.emit('onConnection', {isRGBOn: RGBLed.isOn, color: RGBcolor, 
+                isBañoOn: bañoLed.isOn,
+                isRec1On: rec1Led.isOn,
+                isRec2On: rec2Led.isOn
+            });
             
             socket.on('onToggleRGB', function(data){
                 RGBLed.toggle();
@@ -45,9 +50,43 @@ module.exports = (io) => {
 
             socket.on('onBrightnessChanged', function(data){
                 switch(data['hab']){
-                    case '0': 
-                        cx
+                    case 1: 
+                        bañoLed.brightness(data['brightness']);
+                       
+                        io.emit('toggledBaño', {isBañoOn: bañoLed.isOn});
+                
+
                     break;
+                    case 2:
+                        rec1Led.brightness(data['brightness']);
+                        
+                            io.emit('toggledRecamara1', {isRecamaraOn: rec1Led.isOn});
+                        
+
+                        break;
+                    case 3:
+                        rec2Led.brightness(data['brightness']);
+                        
+                            io.emit('toggledRecamara2', {isRecamaraOn: rec2Led.isOn});
+                        
+
+                        break;
+                    default:
+                    break;
+                }
+            });
+
+            socket.on('getBrightness', function(data){
+                switch(data){
+                    case 1: 
+                        socket.emit("getBrightnessResponse", {brightness: bañoLed.value});
+                    break;
+                    case 2:
+                    socket.emit("getBrightnessResponse", {brightness: rec1Led.value});
+                        break;
+                    case 3:
+                    socket.emit("getBrightnessResponse", {brightness: rec2Led.value});
+                        break;
                     default:
                     break;
                 }
@@ -66,6 +105,10 @@ module.exports = (io) => {
             socket.on('onToggleRecamara2', function(data){
                 rec2Led.toggle();
                 io.emit('toggledRecamara2', {isRecamaraOn: rec2Led.isOn});
+            });
+
+            socket.on('onToggleVentilacion', function(data){
+                //Aqui va lo del ventilador xd
             });
 
             socket.on('disconnect', function(data){
