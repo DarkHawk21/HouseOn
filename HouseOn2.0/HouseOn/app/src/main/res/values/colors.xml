@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#122446</color>
+    <color name="colorPrimaryDark">#324668</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorBlue">#33C</color>
+    <color name="colorBlueThumb">#55A</color>
+    <color name="colorRed">#C33</color>
+    <color name="colorRedThumb">#A55</color>
+    <color name="colorGreen">#3C3</color>
+    <color name="colorGreenThumb">#5A5</color>
+    <color name="colorIntensity">#777</color>
+    <color name="colorIntensityThumb">#666</color>
+    <color name="colorLED">#FFF</color>
+    <color name="background">#324668</color>
+</resources>

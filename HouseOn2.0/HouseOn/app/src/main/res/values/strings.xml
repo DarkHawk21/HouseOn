@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HouseOn</string>
+    <string name="button_connectSocket">Conectar</string>
+    <string name="button_parpadear">Parpadear</string>
+    <string name="LedRGBName">Sala de estar</string>
+    <string name="settings_name">Baño</string>
+</resources>
